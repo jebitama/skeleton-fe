@@ -1,9 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:skeleton/modules/homepage/models/post_model.dart';
 import 'package:skeleton/modules/homepage/services/post_service.dart';
 
 class PostController extends GetxController {
-  final PostService _postService = PostService();
+  final PostService _postService = Get.find();
 
   RxList<Post> posts = <Post>[].obs;
   RxBool isLoading = true.obs;
@@ -20,7 +21,9 @@ class PostController extends GetxController {
       final fetchedPosts = await _postService.fetchPosts();
       posts.assignAll(fetchedPosts);
     } catch (error) {
-      print('Error fetching posts: $error');
+      if (kDebugMode) {
+        print('Error fetching posts: $error');
+      }
     } finally {
       isLoading.value = false;
     }

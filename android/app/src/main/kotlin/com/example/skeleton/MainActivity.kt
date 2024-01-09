@@ -1,4 +1,4 @@
-package com.example.skeleton
+package com.vacaba.app
 
 import io.flutter.embedding.android.FlutterActivity
 

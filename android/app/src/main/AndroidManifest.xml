@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.skeleton">
+    package="com.vacaba.app">
    <application
-        android:label="clickcounter"
+        android:label="vacaba"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

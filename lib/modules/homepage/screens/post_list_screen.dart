@@ -3,14 +3,16 @@ import 'package:get/get.dart';
 import 'package:skeleton/modules/homepage/controllers/post_controller.dart';
 
 class PostListScreen extends StatelessWidget {
+  const PostListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<PostController>(
-      init: PostController(),
+      init: PostController(), //initialized the post controller
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(
-            title: Text('Posts Module'),
+            title: const Text('Posts Module'),
           ),
           body: _buildPostsList(controller),
         );
@@ -20,7 +22,7 @@ class PostListScreen extends StatelessWidget {
 
   Widget _buildPostsList(PostController controller) {
     if (controller.isLoading.isTrue) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       );
     } else {
@@ -29,7 +31,7 @@ class PostListScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final post = controller.posts[index];
           return Card(
-            margin: EdgeInsets.all(8.0),
+            margin: const EdgeInsets.all(8.0),
             child: ListTile(
               title: Text(post.title),
               subtitle: Text(post.body),

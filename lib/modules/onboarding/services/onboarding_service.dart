@@ -1,14 +1,13 @@
-import 'package:skeleton/core/di/dependencies.dart';
+import 'package:get/instance_manager.dart';
+import 'package:skeleton/core/di/local_storage_service.dart';
 
 class OnboardingService {
   static const _onboardingKey = 'is_onboard';
 
-  final LocalStorageService _localStorageService;
+  final LocalStorageService _localStorageService = Get.find();
 
-  OnboardingService(this._localStorageService);
-
-  Future<void> setUserOnboard(String token) async {
-    await _localStorageService.put('user_journey', _onboardingKey, token);
+  Future<void> setUserOnboard(String intro) async {
+    await _localStorageService.put('user_journey', _onboardingKey, intro);
   }
 
   Future<String?> getUserOnboard() async {
